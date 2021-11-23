@@ -66,16 +66,17 @@ accent color two: #FEFBF3; */
         height: 85.5%;
     }
     .key-input{}
-    #key, #mailAdd{
+
+    .key, #mailAdd{
         height: 100%;
-        width: 90%;
+        width: 85%;
         padding: 0 5px;
         font-size: 1rem;
-        font-family: 'lato', sans-serif;
     }
 
     .input-icon{
-        padding: 5px;
+        padding: 4px;
+        margin: 0 1%;
     }
 
     /* login button */

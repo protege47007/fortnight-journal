@@ -1,0 +1,75 @@
+@media only screen and (max-width: 320px){
+    :root{
+        --primary: #77ACF1;
+        --secondary: #1abc9c;
+        --accent-one: #FFF;
+        --links: #0d6efd;
+    }
+
+    body{
+        background-color: var(--secondary);
+        width: 100vw;
+        height: 100vh;
+    }
+    .home-pane, footer{
+        padding: 0 1rem;
+    }
+    .home-pane{
+        background-color: var(--accent-one);
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        
+    }
+    .home-header{
+        padding: 0 0 1rem 0;
+    }
+
+    .brand, .nav-link{
+        letter-spacing: 5px;
+    }
+
+    .top-brand{
+        padding: 1.5rem 0 1rem; 
+    }
+
+    .nav-list{
+        list-style-type: none;
+    }
+
+    .nav-link{
+        text-decoration: underline;
+        color: var(--links);
+        font-size: .8rem;
+        line-height: 1.8;
+        font-weight: 600
+    }
+
+    .main-container{
+        padding: 1rem 0 1.5rem;
+    }
+
+    .active-header{
+        font-weight: 700;
+        padding-bottom: 1rem;
+    }
+
+    .intro{
+        text-align: justify;
+    }
+
+    .footer-nav{
+        padding: .5rem 0;
+    }
+    .footer-brand{
+        padding: 1rem 0 1rem 0;
+    }
+    .footer-label{
+        margin: 0 0 7rem 0;
+    }
+    .footer-link{
+        color: #000;
+    }
+    hr{
+        border: 1px solid #000;
+    }
+}

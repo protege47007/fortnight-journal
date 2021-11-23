@@ -10,7 +10,10 @@ export class Mail extends Component {
                 <input 
                 type="email" 
                 name="mail" 
-                id={this.props.mailId} />
+                id={this.props.mailId}
+                placeholder={this.props.holder}
+                spellCheck='false'
+                />
             </div>
         )
     }
