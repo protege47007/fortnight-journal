@@ -1,6 +1,6 @@
 import React from "react";
-import ComposeForm from "../../partials/components/ComposeForm";
-import ComposeNav from "../../partials/components/ComposeNav";
+import ComposeForm from "../../partials/components/body/ComposeForm";
+import ComposeNav from "../../partials/components/body/ComposeNav";
 import FooterMin from "../../partials/footers/FooterMin";
 import ComposeHeader from "../../partials/headers/ComposeHeader";
 

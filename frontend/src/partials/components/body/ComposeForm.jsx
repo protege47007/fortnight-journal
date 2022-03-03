@@ -1,7 +1,7 @@
 import React from "react";
-import Category from "./body/formComponents/Category";
-import TextArea from "./body/formComponents/TextArea";
-import Title from "./body/formComponents/Title";
+import Category from "./formComponents/Category";
+import TextArea from "./formComponents/TextArea";
+import Title from "./formComponents/Title";
 
 function ComposeForm() {
   
