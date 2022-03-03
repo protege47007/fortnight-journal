@@ -1,6 +1,7 @@
 // import Login from "./HOC/Login";
 // import Signup from "./HOC/Signup";
-import Compose from "./pages/Compose";
+import Compose from "./pages/admin/Compose";
+import Trash from "./pages/admin/Trash";
 import Home from "./pages/Home";
 
 
@@ -10,7 +11,8 @@ function App() {
       {/* <Login/> */}
       {/* <Signup/> */}
       {/* <Home/> */}
-      <Compose/>
+      {/* <Compose/> */}
+      <Trash/>
     </div>
   );
 }

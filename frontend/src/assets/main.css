@@ -527,6 +527,50 @@ Ensure the default browser behavior of the `hidden` attribute.
   left: 8.5rem;
 }
 
+.left-64 {
+  left: 16rem;
+}
+
+.left-\[15\.5rem\] {
+  left: 15.5rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
+.top-14 {
+  top: 3.5rem;
+}
+
+.left-40 {
+  left: 10rem;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.left-96 {
+  left: 24rem;
+}
+
+.left-80 {
+  left: 20rem;
+}
+
+.left-\[22rem\] {
+  left: 22rem;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -951,6 +995,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.text-teal-500 {
+  --tw-text-opacity: 1;
+  color: rgb(20 184 166 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -965,6 +1019,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.opacity-60 {
+  opacity: 0.6;
 }
 
 .outline-0 {
