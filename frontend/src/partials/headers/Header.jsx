@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 function Header() {
  
   return (
-    <header className="home-header font-fontC font-light text-white">
+    <header className=" font-fontC font-light ">
       <Brand brandClassName="top-brand"/>
       <Nav
       navContainer="header-nav-container" 

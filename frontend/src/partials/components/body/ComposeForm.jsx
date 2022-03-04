@@ -1,7 +1,7 @@
 import React from "react";
 import Category from "./formComponents/Category";
 import TextArea from "./formComponents/TextArea";
-import Title from "./formComponents/Title";
+import Input from "./formComponents/Input";
 
 function ComposeForm() {
   
@@ -10,11 +10,11 @@ function ComposeForm() {
 
   return (
     <form className="relative">
-        <Title/>
+        <Input name='Title' id='title' type='text'/>
 
       <Category/>
 
-      <TextArea/>
+      <TextArea name='Post' id='post' placeHolder='Any new inspirations today?'/>
 
       <button className="text-xl py-1 px-3 m-1 border border-gray-500 rounded-md">
         save as draft

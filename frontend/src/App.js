@@ -4,6 +4,7 @@ import Archive from "./pages/admin/Archive";
 import Compose from "./pages/admin/Compose";
 import Drafts from "./pages/admin/Drafts";
 import Trash from "./pages/admin/Trash";
+import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 
 
@@ -16,7 +17,8 @@ function App() {
       {/* <Compose/> */}
       {/* <Trash/> */}
       {/* <Drafts/> */}
-      <Archive />
+      {/* <Archive /> */}
+      <Contact/>
     </div>
   );
 }
