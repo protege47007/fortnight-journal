@@ -1,12 +1,12 @@
 import React from "react";
-import ComposeForm from "../../partials/components/body/ComposeForm";
-import ComposeNav from "../../partials/components/body/ComposeNav";
+import ComposeForm from "../../components/dashboard/ComposeForm";
+import ComposeNav from "../../components/dashboard/ComposeNav";
 import FooterMin from "../../partials/footers/FooterMin";
-import ComposeHeader from "../../partials/headers/ComposeHeader";
+import ComposeHeader from "../../components/dashboard/ComposeHeader";
 
 function Compose() {
   return (
-    <div className="container  bg-teal-500 ">
+    <div className=" bg-teal-500 ">
       <div className="p-4 bg-white rounded-b-3xl">
         <ComposeHeader />
         <ComposeNav />
