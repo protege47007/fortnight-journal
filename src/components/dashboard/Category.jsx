@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import { MdAddCircleOutline, MdRemoveCircleOutline } from "react-icons/md"
 
-function Category() {
-  const Option = [ "Relationship Takes", "Weird Thoughts", "Movie & TV Reviews"].map((ele, index) => (
+function Category({cat_val, setter}) {
+  
+
+  const Option = [ "-select one-", "Relationship Takes", "Weird Thoughts", "Movie & TV Reviews"].map((ele, index) => (
     <option value={ele} key={index}>
       {ele}
     </option>
@@ -20,7 +22,7 @@ function Category() {
       </label>
       {hidden === "" ? null : (
         <select
-          id="categories"
+          id="categories" value={cat_val} onChange={(e)=>{setter(e.target.value)}}
           className="text-xl my-2 w-6/12 p-2 bg-teal-500 outline-0"
         >
           {Option}
@@ -50,6 +52,8 @@ function Category() {
         <input
           type="text"
           id="newCategory"
+          value={cat_val}
+          onChange={(e)=>{setter(e.target.value)}}
           className="text-xl border border-solid border-gray-500 p-2 outline-0 focus:border focus:border-solid focus:border-teal-500 focus:border-b-2 w-10/12 my-2"
           required
         />
