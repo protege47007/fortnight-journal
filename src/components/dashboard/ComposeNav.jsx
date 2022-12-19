@@ -16,10 +16,10 @@ function ComposeNav() {
   ]
   return (
     <nav className="border border-solid border-x-0 border-blue-300 flex justify-evenly my-3 mx-0 py-2 ">
-          {links.map( ({url, title, icon}) => (
-          <Link to={url} key={title}><span className="text-center">{icon}{title}</span></Link>
-          ))}
-      </nav>
+      {links.map( ({url, title, icon}) => (
+        <Link to={url} key={title}><span className="text-center">{icon}{title}</span></Link>
+      ))}
+    </nav>
   )
 }
 
