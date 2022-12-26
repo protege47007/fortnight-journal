@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Category from "./Category"
 import EditorJS from '@editorjs/editorjs'
-// import config from "./editor/config"
+import config from "./editor/config"
 
 function ComposeForm() {
   const [title, setTitle] = useState("")
@@ -10,37 +10,29 @@ function ComposeForm() {
 
   
   useEffect(() => {
-    setEditor( () => new EditorJS({
-      /**
-       * Id of Element that should contain Editor instance
-       */
-      holder: "post",
-      logLevel: "VERBOSE",
-      placeholder: "Any new inspirations today?",
-      onChange: (api, event) => {
-        saveProgress()
-        console.log('Now I know that Editor\'s content changed!', event)
-      },
-    }))   
+    editor === "" && setEditor( () => new EditorJS(config))   
     
-    if (editor !== "") {
-      editor.isReady
-      .then(() => {
-        console.log('Editor.js is ready to work!')
-        /** Do anything you need after editor initialization */
-      })
-      .catch((reason) => {
-        console.log(`Editor.js initialization failed because of ${reason}`)
-      })
-    }
+    
     
   }, [])
+
+  if (editor !== "") {
+    editor.isReady
+    .then(() => {
+      console.log('Editor.js is ready to work!')
+      /** Do anything you need after editor initialization */
+    })
+    .catch((reason) => {
+      console.log(`Editor.js initialization failed because of ${reason}`)
+    })
+  }
+  
   
   
 
-  
+  function saveProgress(e){
+    e.preventDefault()
 
-  function saveProgress(){
     editor.save().then((outputData) => {
       console.log('Article data: ', outputData)
     }).catch((error) => {
@@ -49,12 +41,11 @@ function ComposeForm() {
   }
 
   return (
-    <form className="relative border border-black  mb-10">
+    <form className="relative border border-black  mb-10 py-4">
       <div className="py-2 text-xl">
         <label htmlFor="title" className="text-xl block">Title</label>
         <input type="text" id="title" value={title} onChange={(e) => {setTitle(e.target.value)}} 
           className="text-xl border border-solid border-gray-500 p-2 outline-0 focus:border focus:border-solid focus:border-teal-500 focus:border-b-2 w-11/12 my-2"
-          required
         />
       </div>
       <Category value={cat_val} setter={setCat_val}/>
@@ -64,13 +55,13 @@ function ComposeForm() {
         <div id="post" className="relative text-xl border border-solid border-gray-500 p-3 w-11/12 h-96 overflow-hidden overflow-y-auto overflow-x-auto"></div>
       </div>
 
-
-      <button className="text-xl py-1 px-3 m-1 border border-gray-500 rounded-md">
+      <button onClick={saveProgress} className="text-xl py-1 px-3  border border-gray-500 rounded-md">save progress fish</button>
+      <button className="text-xl py-1 px-3  border border-gray-500 rounded-md">
         save as draft
       </button>
       <button
         type="submit"
-        className="text-xl py-1 px-3 m-1 border-2 border-teal-500 bg-teal-500 rounded-md absolute left-[15.5rem]"
+        className="text-xl py-1 px-3 border-2 border-teal-500 bg-teal-500 rounded-md absolute left-[15.5rem]"
       >
         publish
       </button>
