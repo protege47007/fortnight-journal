@@ -1,27 +1,52 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Category from "./Category"
 import EditorJS from '@editorjs/editorjs'
+// import config from "./editor/config"
 
 function ComposeForm() {
   const [title, setTitle] = useState("")
   const [cat_val, setCat_val] = useState("")
-  const [article, setArticle] = useState("")
+  const [editor, setEditor] = useState("")
 
-  const editor = new EditorJS({
-    /**
-     * Id of Element that should contain Editor instance
-     */
-    holder: 'post'
-  })
+  
+  useEffect(() => {
+    setEditor( () => new EditorJS({
+      /**
+       * Id of Element that should contain Editor instance
+       */
+      holder: "post",
+      logLevel: "VERBOSE",
+      placeholder: "Any new inspirations today?",
+      onChange: (api, event) => {
+        saveProgress()
+        console.log('Now I know that Editor\'s content changed!', event)
+      },
+    }))   
+    
+    if (editor !== "") {
+      editor.isReady
+      .then(() => {
+        console.log('Editor.js is ready to work!')
+        /** Do anything you need after editor initialization */
+      })
+      .catch((reason) => {
+        console.log(`Editor.js initialization failed because of ${reason}`)
+      })
+    }
+    
+  }, [])
+  
+  
 
-  editor.isReady
-  .then(() => {
-    console.log('Editor.js is ready to work!')
-    /** Do anything you need after editor initialization */
-  })
-  .catch((reason) => {
-    console.log(`Editor.js initialization failed because of ${reason}`)
-  })
+  
+
+  function saveProgress(){
+    editor.save().then((outputData) => {
+      console.log('Article data: ', outputData)
+    }).catch((error) => {
+      console.log('Saving failed: ', error)
+    })
+  }
 
   return (
     <form className="relative border border-black  mb-10">
@@ -36,13 +61,7 @@ function ComposeForm() {
 
       <div className="py-2">
         <label htmlFor="post" className="text-xl block">Post</label>
-        <textarea id="post"
-          className="text-xl border border-solid border-gray-500 p-3 w-11/12 h-96 outline-0 focus:border focus:border-solid focus:border-teal-500 focus:border-b-2 resize-none"
-          placeholder="Any new inspirations today?"
-          value={article}
-          onChange={(e)=>{setArticle(e.target.value)}}
-          required
-        ></textarea>
+        <div id="post" className="relative text-xl border border-solid border-gray-500 p-3 w-11/12 h-96 overflow-hidden overflow-y-auto overflow-x-auto"></div>
       </div>
 
 
