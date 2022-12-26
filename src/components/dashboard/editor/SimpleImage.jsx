@@ -1,5 +1,6 @@
 class SimpleImage{
-    constructor({data}){
+    constructor({data, api}){
+        this.api = api
         this.data = data
         this.wrapper = undefined
     }
@@ -48,12 +49,13 @@ class SimpleImage{
         console.log(url)
 
         const image = document.createElement('img')
-        const caption = document.createElement('input')
+        const caption = document.createElement('div')
 
         image.src = url
-
         image.classList.add("max-w-10/12", "mb-5")
-        caption.classList.add("w-full", "py-1", "px-3", "rounded", "outline-none", "border", "border-teal-500")
+
+        caption.contentEditable = true
+        caption.classList.add("w-full", "py-1", "px-3", "rounded", "outline-none", "text-gray-500")
         caption.placeholder = 'Caption...'
         caption.value = caption_value || ''
 
@@ -64,12 +66,20 @@ class SimpleImage{
 
     save(block_content){
         const image = block_content.querySelector('img')
-        const caption = block_content.querySelector('input')
+        const caption = block_content.querySelector('[contenteditable]')
 
-        return {
-            url: image.src,
-            caption: caption.value
+        const sanitizerConfig = {
+            b: true, 
+            a: {
+               href: true
+            },
+            i: true
         }
+
+        return Object.assign(this.data, {
+            url: image.src,
+            caption: this.api.sanitizer.clean(caption.innerHTML || "", sanitizerConfig) //caption.value
+        })
     }
 
     validate(savedData){
