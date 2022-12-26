@@ -55,7 +55,7 @@ function Category({cat_val, setter}) {
           value={cat_val}
           onChange={(e)=>{setter(e.target.value)}}
           className="text-xl border border-solid border-gray-500 p-2 outline-0 focus:border focus:border-solid focus:border-teal-500 focus:border-b-2 w-10/12 my-2"
-          required
+          
         />
       </div>
     </div>
