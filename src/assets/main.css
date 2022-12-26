@@ -562,6 +562,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
 .hidden {
   display: none;
 }
@@ -741,6 +745,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-teal-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(204 251 241 / var(--tw-bg-opacity));
+}
+
+.bg-\[rgba\(245\2c 235\2c 111\2c 0\.29\)\] {
+  background-color: rgba(245,235,111,0.29);
 }
 
 .p-4 {
