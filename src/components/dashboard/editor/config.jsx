@@ -1,4 +1,10 @@
 import SimpleImage from "./SimpleImage"
+import Header from "@editorjs/header"
+import Checklist from "@editorjs/checklist"
+import Embed from "@editorjs/embed"
+import Quote from "@editorjs/quote"
+import NestedList from "@editorjs/nested-list"
+import Table from "@editorjs/table"
 
 
 const config = {
@@ -6,11 +12,64 @@ const config = {
     logLevel: "VERBOSE",
     placeholder: "Any new inspirations today?",
     tools: {
-        image: SimpleImage
+        image: {
+            class: SimpleImage,
+            inlineToolbar: true
+        },
+        header: {
+            class: Header,
+            config: {
+              placeholder: "Enter a header",
+              levels: [1, 2, 3, 4, 5, 6],
+              defaultLevel: 3
+            },
+            shortcut: "CMD+SHIFT+H"
+        },
+        checklist: {
+            class: Checklist,
+            inlineToolbar: true,
+        },
+        list: {
+            class: NestedList,
+            inlineToolbar: true,
+            config: {
+              defaultStyle: "unordered"
+            }
+        },
+        embed: {
+            class: Embed,
+            config: {
+                services: {
+                    youtube: true,
+                    twitter: true,
+                    pinterest: true,
+                    facebook: true,
+                    instagram: true,
+                }
+            },
+            inlineToolbar: true
+        },
+        quote: {
+            class: Quote,
+            inlineToolbar: true,
+            shortcut: "CMD+SHIFT+O",
+            config: {
+                quotePlaceholder: "Enter a quote",
+                captionPlaceholder: "Quote\"s author",
+            },
+        },
+        table: {
+            class: Table,
+            inlineToolbar: true,
+            config: {
+              rows: 2,
+              cols: 3,
+            },
+        }
     },
     onChange: (api, event) => {
       // saveProgress()
-      console.log('Now I know that Editor\'s content changed!', event)
+      console.log("Now I know that Editor\"s content changed!", event)
     },
     data: {
         time: 1552744582955,
