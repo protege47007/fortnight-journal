@@ -3,6 +3,8 @@ class MarkerTool {
         this.api = api
         this.button = null
         this._state = false
+        this.tag = "MARK"
+        this.class = ["bg-[rgba(245,235,111,0.29)]", "py-2"].map( item => item)
     }
 
     static get isInline() {
@@ -10,13 +12,17 @@ class MarkerTool {
     }
 
     get state() {
-        return this._state;
+        return this._state
+    }
+
+    get shortcut() {
+        return 'CMD+M';
     }
 
     set state(state) {
-        this._state = state;
+        this._state = state
 
-        this.button.classList.toggle(this.api.styles.inlineToolButtonActive, state);
+        this.button.classList.toggle(this.api.styles.inlineToolButtonActive, state)
     }
 
     render() {
@@ -38,7 +44,7 @@ class MarkerTool {
         const selectedText = range.extractContents()
 
         // Create MARK element
-        const mark = document.createElement('MARK')
+        const mark = document.createElement(this.tag)
 
         // Append to the MARK element selected TextNode
         mark.appendChild(selectedText)
@@ -51,9 +57,9 @@ class MarkerTool {
 
     wrap(range) {
         const selectedText = range.extractContents()
-        const mark = document.createElement('MARK')
+        const mark = document.createElement(this.tag)
     
-        mark.classList.add("bg-[rgba(245,235,111,0.29)]", "py-2")
+        mark.classList.add(this.class)
         mark.appendChild(selectedText)
         range.insertNode(mark)
     
@@ -61,7 +67,7 @@ class MarkerTool {
     }
     
     unwrap(range) {
-        const mark = this.api.selection.findParentTag('MARK')
+        const mark = this.api.selection.findParentTag(this.tag, this.class)
         const text = range.extractContents()
     
         mark.remove()
@@ -73,6 +79,54 @@ class MarkerTool {
         const mark = this.api.selection.findParentTag(this.tag)
       
         this.state = !!mark
+
+        if (this.state) {
+            this.showActions(mark)
+        } else {
+            this.hideActions()
+        }
+    }
+
+    renderActions() {
+        this.colorPicker = document.createElement('input')
+        this.colorPicker.type = 'color'
+        this.colorPicker.value = '#f5f1cc'
+        this.colorPicker.hidden = true
+    
+        return this.colorPicker
+    }
+
+    showActions(mark) {
+        const { backgroundColor } = mark.style
+        this.colorPicker.value = backgroundColor ? this.convertToHex(backgroundColor) : '#f5f1cc'
+    
+        this.colorPicker.onchange = () => {
+            mark.style.backgroundColor = this.colorPicker.value
+        }
+        this.colorPicker.hidden = false
+    }
+
+    convertToHex(color) {
+        const rgb = color.match(/(\d+)/g);
+        
+        let hexr = parseInt(rgb[0]).toString(16);
+        let hexg = parseInt(rgb[1]).toString(16);
+        let hexb = parseInt(rgb[2]).toString(16);
+        
+        hexr = hexr.length === 1 ? '0' + hexr : hexr;
+        hexg = hexg.length === 1 ? '0' + hexg : hexg;
+        hexb = hexb.length === 1 ? '0' + hexb : hexb;
+        
+        return '#' + hexr + hexg + hexb;
+    }
+    
+    hideActions() {
+        this.colorPicker.onchange = null
+        this.colorPicker.hidden = true
+    }
+
+    clear() {
+        this.hideActions();
     }
 }
 
