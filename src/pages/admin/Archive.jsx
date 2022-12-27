@@ -1,6 +1,6 @@
-import React from 'react';
-import ComposeUtil from '../../partials/components/body/ComposeUtil';
-import {data} from '../../partials/components/store/Resource';
+import React from 'react'
+import ComposeUtil from '../../components/dashboard/ComposeUtil'
+import { data } from '../../data/Resource'
 
 function Archive() {
   return (
