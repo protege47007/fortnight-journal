@@ -1,8 +1,8 @@
-import React from "react";
-import ComposeForm from "../../components/dashboard/ComposeForm";
-import ComposeNav from "../../components/dashboard/ComposeNav";
-import FooterMin from "../../partials/footers/FooterMin";
-import ComposeHeader from "../../components/dashboard/ComposeHeader";
+import React from "react"
+import ComposeForm from "../../components/dashboard/ComposeForm"
+import ComposeNav from "../../components/dashboard/ComposeNav"
+import FooterMin from "../../components/footer/FooterMin"
+import ComposeHeader from "../../components/dashboard/ComposeHeader"
 
 function Compose() {
   return (
@@ -14,7 +14,7 @@ function Compose() {
       </div>
       <FooterMin />
     </div>
-  );
+  )
 }
 
-export default Compose;
+export default Compose
