@@ -5,6 +5,7 @@ import Embed from "@editorjs/embed"
 import Quote from "@editorjs/quote"
 import NestedList from "@editorjs/nested-list"
 import Table from "@editorjs/table"
+import MarkerTool from "./Marker"
 
 
 const config = {
@@ -14,6 +15,10 @@ const config = {
     tools: {
         image: {
             class: SimpleImage,
+            inlineToolbar: true
+        },
+        marker: {
+            class: MarkerTool,
             inlineToolbar: true
         },
         header: {
